@@ -3,17 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
+using UnityEngine.AI;
 
 public class AllyAttack : MonoBehaviour {
 
 	public float attackDistance;
+	public float valueOfSearchingForTheEnemy; 
 	[SerializeField]private GameObject enemyObject;
-	private float funcResult;
+	[SerializeField]private float funcResult;
 	private Animator animator;
 	private AnimatorStateInfo animatorState;
+	private NavMeshAgent agent;
+	[SerializeField]private Vector3 targetPos = Vector3.zero;
 
 	void Start () {
 		animator = GetComponent<Animator> ();
+		agent = GetComponent<NavMeshAgent> ();
+
+		// EnemyTowerタグがついたものを探す
+		this.UpdateAsObservable ()
+			.TakeWhile (x => targetPos == Vector3.zero)
+			.Subscribe (x => targetPos = GameObject.FindWithTag ("EnemyTower").transform.position);
 
 		// 1番近い敵を探す
 		this.UpdateAsObservable ()
@@ -22,6 +32,21 @@ public class AllyAttack : MonoBehaviour {
 				funcResult = AttackDistance();
 				animatorState = this.animator.GetCurrentAnimatorStateInfo(0);
 			});
+
+		// searching for the enemy
+		this.UpdateAsObservable ()
+			.Where (_ => funcResult > valueOfSearchingForTheEnemy)
+			.Subscribe (_ => {
+				agent.destination = targetPos;
+				agent.stoppingDistance = 2.5f;
+		});
+		this.UpdateAsObservable ()
+			.Where (_ => funcResult <= valueOfSearchingForTheEnemy)
+			.Where (_ => funcResult > attackDistance)
+			.Subscribe (_ => {
+				agent.stoppingDistance = 2.5f;
+				agent.destination = enemyObject.transform.position;
+		});
 		
 		// Enemyが攻撃範囲にいれば攻撃
 		this.UpdateAsObservable ()
@@ -41,7 +66,6 @@ public class AllyAttack : MonoBehaviour {
 	}
 
 	void SearchEnemies() {
-
 		GameObject[] enemies;
 		float minDistance = float.MaxValue;
 		float tmpDistance;
