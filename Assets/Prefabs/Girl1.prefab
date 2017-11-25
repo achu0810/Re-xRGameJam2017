@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 65792830135091754}
   - component: {fileID: 54674696220108112}
   m_Layer: 0
-  m_Name: Sword_01
+  m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -857,6 +857,7 @@ MonoBehaviour:
   enemyObject: {fileID: 0}
   funcResult: 0
   targetPos: {x: 0, y: 0, z: 0}
+  swordObject: {fileID: 1093920112553366}
 --- !u!137 &137167998374213674
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
