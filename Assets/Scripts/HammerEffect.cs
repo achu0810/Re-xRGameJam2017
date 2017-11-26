@@ -19,6 +19,7 @@ public class HammerEffect : MonoBehaviour {
 
 		this.UpdateAsObservable ()
 			.Where (_ => animatorState.normalizedTime >= insSec)
+			.Where(_ => animatorState.IsName("standing_melee_combo_attack_ver_2"))
 			.ThrottleFirst (System.TimeSpan.FromSeconds (3f))
 			.Subscribe (_ => {
 				GameObject obj = Instantiate(groundEff, muzzle.transform.position, muzzle.transform.rotation);

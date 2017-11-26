@@ -12,7 +12,7 @@ public class LookingEnemy : MonoBehaviour {
 	public float m_speed;
 	
 	void Start () {
-		Destroy (this.gameObject, 5f);
+		Destroy (this.gameObject, 3f);
 
 		this.UpdateAsObservable ()
 			.Subscribe (x => {
