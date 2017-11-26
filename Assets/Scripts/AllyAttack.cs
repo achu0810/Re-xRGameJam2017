@@ -22,8 +22,17 @@ public class AllyAttack : MonoBehaviour {
 	public float endAttackSec;
 	public TrailRenderer trailRenderer;
 	public float stoppingDistance;
-
+	public float goalDistance;
 	void Start () {
+
+		// near EnemyTower
+		this.UpdateAsObservable ()
+			.Where (_ => enemyObject == null)
+			.Where (_ => Vector3.Distance (transform.position, targetPos) <= goalDistance)
+			.Subscribe (_ => {
+				transform.position += transform.forward * Time.deltaTime;
+				agent.enabled = false;
+		});
 
 		// add collision to sword  0.25f
 		this.UpdateAsObservable ()
@@ -115,6 +124,12 @@ public class AllyAttack : MonoBehaviour {
 				minDistance = tmpDistance;
 				enemyObject = enemy.gameObject;
 			}
+		}
+	}
+
+	void OnTriggerEnter(Collider other) {
+		if(other.tag == "EnemyTower") {
+			Destroy (this.gameObject);
 		}
 	}
 
