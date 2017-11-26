@@ -726,10 +726,6 @@ Prefab:
       propertyPath: attackParticle
       value: 
       objectReference: {fileID: 583028306}
-    - target: {fileID: 100000, guid: 06aec8c7ff2a2174f8c755f09af72d57, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 06aec8c7ff2a2174f8c755f09af72d57, type: 2}
   m_IsPrefabParent: 0
