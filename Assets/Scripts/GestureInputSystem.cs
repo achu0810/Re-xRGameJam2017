@@ -13,8 +13,14 @@ public class GestureInputSystem : MonoBehaviour {
                                 .Publish();
         lineOfSightObj.Subscribe(h => hit = h.Current).AddTo(gameObject);
 
-        lineOfSightObj.Subscribe(h => {
-            h.Current.transform.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
-        });
-   }
+        lineOfSightObj
+            .Subscribe(h => {
+                h.Current.transform.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
+            });
+
+        lineOfSightObj
+            .Subscribe(h =>{
+                h.Previous.transform.GetComponent<Renderer>().material.color = new Color(0,0,0);
+            });
+    }
 }

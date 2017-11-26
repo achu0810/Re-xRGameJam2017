@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - test
+  - Enemy
+  - EnemyTower
+  - AllyWeapon
   layers:
   - Default
   - TransparentFX
@@ -14,8 +16,8 @@ TagManager:
   - UI
   - 
   - 
-  - Mass
-  - Test
+  - 
+  - 
   - 
   - 
   - 
