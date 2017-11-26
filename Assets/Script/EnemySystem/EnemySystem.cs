@@ -9,7 +9,7 @@ public class EnemySystem : MonoBehaviour {
 	public GameObject target;
 	public float attackDistance = 2f;
 	public GameObject attackParticle;
-
+	
 	Animator _anim;
 	GameObject nowTarget;
 	NavMeshAgent nma;
@@ -52,12 +52,19 @@ public class EnemySystem : MonoBehaviour {
 	// Update is called once per frame
 	IEnumerator myUpdate() {
 
+		float distance;
+
 		while(true) {
 
 			nma.destination = nowTarget.transform.position;
 
+			distance = (transform.position - target.transform.position).sqrMagnitude;
+			if(attackDistance * attackDistance >= distance) 
+				Destroy(this.gameObject);
+				
 
-			float distance = (transform.position - nowTarget.transform.position).sqrMagnitude;
+			distance = (transform.position - nowTarget.transform.position).sqrMagnitude;
+
 			while(attackDistance * attackDistance >= distance && nowTarget != null) 
 				yield return StartCoroutine(attackCharacter());
 			_anim.SetInteger(animState, WALK);
