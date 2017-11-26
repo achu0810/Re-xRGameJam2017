@@ -25,7 +25,7 @@ public class EnemySystem : MonoBehaviour {
 
 		nowTarget = target;
 		nma = GetComponent<NavMeshAgent>();
-		nma.destination = target.transform.position;
+		
 		_anim = GetComponent<Animator>();
 		_anim.SetInteger(animState, WALK);
 		flag = false;
@@ -119,5 +119,9 @@ public class EnemySystem : MonoBehaviour {
 		nowTarget = newT.gameObject;
 		nma.destination = newT.gameObject.transform.position;
 	}
-	
+
+	public void setTarget(GameObject t) {
+		target = t;
+	}
+
 }

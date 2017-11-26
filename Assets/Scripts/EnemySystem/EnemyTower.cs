@@ -8,6 +8,8 @@ public class EnemyTower : MonoBehaviour {
 
 	public List<GameObject> Enemies;
 	public GameObject target;
+	public float makeEnemySpan = 5.0f;
+
 
 	// Use this for initialization
 	void Start () {
@@ -23,12 +25,13 @@ public class EnemyTower : MonoBehaviour {
 
 		while(true) {
 
-			yield return new WaitForSeconds(5f);
+			yield return new WaitForSeconds(makeEnemySpan);
 
 
 			GameObject newEnemy = Instantiate(Enemies[Random.Range(0, Enemies.Count)]);
 			newEnemy.transform.position = respawn[Random.Range(0, respawn.Count)].transform.position;
 			es = newEnemy.GetComponent<EnemySystem>();
+			es.setTarget(target);
 
 		}
 
