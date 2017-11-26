@@ -475,7 +475,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1796322806852232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.7054715, y: 0.015, z: -1}
+  m_LocalPosition: {x: 0.6487665, y: 0.015, z: 2.7}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 4847655262978896}
@@ -981,6 +981,7 @@ MonoBehaviour:
   endAttackSec: 0.4
   trailRenderer: {fileID: 96209132318517918}
   stoppingDistance: 1
+  goalDistance: 1
 --- !u!137 &137167998374213674
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1051,7 +1052,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.34
-  m_Speed: 0.2
+  m_Speed: 0.4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
