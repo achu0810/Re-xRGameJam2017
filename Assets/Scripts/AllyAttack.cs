@@ -9,7 +9,7 @@ public class AllyAttack : MonoBehaviour {
 
 	public float attackDistance;
 	public float valueOfSearchingForTheEnemy; 
-	[SerializeField]private GameObject enemyObject;
+	public GameObject enemyObject;
 	[SerializeField]private float funcResult;
 	private Animator animator;
 	private AnimatorStateInfo animatorState;
