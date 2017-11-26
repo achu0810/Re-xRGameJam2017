@@ -7,7 +7,7 @@ public class EnemySystem : MonoBehaviour {
 
 	public float HP = 5.0f;
 	public GameObject target;
-	public float attackDistance = 2f;
+	public float attackDistance = 0.05f;
 	public GameObject attackParticle;
 	
 	Animator _anim;
@@ -25,7 +25,7 @@ public class EnemySystem : MonoBehaviour {
 
 		nowTarget = target;
 		nma = GetComponent<NavMeshAgent>();
-		nma.destination = target.transform.position;
+		
 		_anim = GetComponent<Animator>();
 		_anim.SetInteger(animState, WALK);
 		flag = false;
@@ -40,8 +40,8 @@ public class EnemySystem : MonoBehaviour {
 		ap.transform.position = nowTarget.transform.position;
 		Destroy(ap.gameObject, 2);
 
-		TestAlly ta = nowTarget.GetComponent<TestAlly>();
-		ta.damage(5f);
+		//TestAlly ta = nowTarget.GetComponent<TestAlly>();
+		//ta.damage(5f);
 
 		yield return new WaitForSeconds(1.23f);
 
@@ -96,7 +96,7 @@ public class EnemySystem : MonoBehaviour {
 	}
 
 
-	private void OnTriggerStay(Collider other) {
+	private void OnTriggerEnter(Collider other) {
 
 		/*
 		 * 身近に敵がいる かつ 今の目標は敵キャラクターである場合
@@ -119,5 +119,9 @@ public class EnemySystem : MonoBehaviour {
 		nowTarget = newT.gameObject;
 		nma.destination = newT.gameObject.transform.position;
 	}
-	
+
+	public void setTarget(GameObject t) {
+		target = t;
+	}
+
 }

@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 114410671742411126}
   m_Layer: 0
   m_Name: Girl3
-  m_TagString: Untagged
+  m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537,8 +537,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1225697901058554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5737381, y: 0.015, z: -3.0558965}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.194, y: 0.015, z: 2.2}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 4762900254136184}
   - {fileID: 4802456241043784}
@@ -1341,7 +1341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0795dc17b37e3a4fb0562aa0c065215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 6.1
+  attackDistance: 1.5
   valueOfSearchingForTheEnemy: 15
   enemyObject: {fileID: 0}
   funcResult: 0
@@ -1352,7 +1352,8 @@ MonoBehaviour:
   startAttackSec: 0
   endAttackSec: 0
   trailRenderer: {fileID: 96227256220401668}
-  stoppingDistance: 6
+  stoppingDistance: 1.5
+  goalDistance: 1
 --- !u!137 &137385564518897208
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1423,7 +1424,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.34
-  m_Speed: 2
+  m_Speed: 0.4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
