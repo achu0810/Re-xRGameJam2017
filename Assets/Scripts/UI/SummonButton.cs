@@ -25,13 +25,13 @@ public class SummonButton : MonoBehaviour {
     // Use this for initialization
     void Start() {
         this.UpdateAsObservable()
-            .Where(_ => input.lineOfSightObj2 != null)
+            .Where(_ => input.lineOfSightObjChange != null)
             .First()
             .Subscribe(_ => {
-            input.lineOfSightObj2
+            input.lineOfSightObjChange
                      .Where(x => x.Current.transform == show.transform)
                      .Subscribe(x => selected());
-            input.lineOfSightObj2
+            input.lineOfSightObjChange
                      .Where(x => x.Previous.transform == show.transform)
                      .Subscribe(x => normal());
             });
@@ -64,7 +64,7 @@ public class SummonButton : MonoBehaviour {
 #if UNITY_EDITOR
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
-            input.lineOfSightObj2
+            input.lineOfSightObjChange
                  .Subscribe(_ => {
                      pushed();
                  });

@@ -5,11 +5,19 @@ using UniRx;
 using UniRx.Triggers;
 
 public class GestureInputSystem : MonoBehaviour {
-    public IObservable<Pair<RaycastHit>> lineOfSightObj2;
+    public Subject<RaycastHit> lineOfSightObj = new Subject<RaycastHit>();
+    public IObservable<Pair<RaycastHit>> lineOfSightObjChange;
     public RaycastHit hit;
 
     // Use this for initialization
     void Start () {
-        lineOfSightObj2 = Service.RaycastSystem(transform, 10f).Where(x => x.Previous.transform != x.Current.transform);
+        this.UpdateAsObservable()
+            .Subscribe(_ => {
+            Physics.Raycast(transform.position, transform.forward, out hit, 100f);
+            lineOfSightObj.OnNext(hit);
+            });
+        lineOfSightObjChange = lineOfSightObj
+            .Pairwise()
+            .Where(x => x.Previous.transform != x.Current.transform);
     }
 }
