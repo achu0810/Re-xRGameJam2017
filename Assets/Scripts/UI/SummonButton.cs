@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.WSA.Input;
@@ -19,21 +20,26 @@ public class SummonButton : MonoBehaviour {
     Button button;
     [SerializeField]
     Texture disabledTexture;
-	[SerializeField]private Transform m_point;
+    [SerializeField] private Transform m_point;
 
     // Use this for initialization
-    void Start () {
-        input.lineOfSightObj
-             .Where(x => x.Current.transform == transform)
-             .Subscribe(x => selected());
-        input.lineOfSightObj
-             .Where(x => x.Previous.transform == transform)
-             .Subscribe(_ => normal());
-		InteractionManager.InteractionSourcePressed += SourcePressed;
+    void Start() {
+        this.UpdateAsObservable()
+            .SkipWhile(_ => input.lineOfSightObj2 == null)
+            .First()
+            .Subscribe(_ => {
+                input.lineOfSightObj2
+                     .Where(x => x.Current == transform)
+                     .Subscribe(x => selected());
+                input.lineOfSightObj2
+                     .Where(x => x.Previous == transform)
+                     .Subscribe(x => normal());
+            });
+        InteractionManager.InteractionSourcePressed += SourcePressed;
     }
 
     void SourcePressed(InteractionSourcePressedEventArgs state) {
-        if (input.hit.transform == transform) {
+        if (input.hit == transform) {
             pushed();
         }
     }
@@ -52,6 +58,17 @@ public class SummonButton : MonoBehaviour {
 
     void pushed() {
         show.material.mainTexture = pushedTexture;
-		var summoned = Instantiate(summonCharacter, m_point.transform.position, m_point.transform.rotation);
+        var summoned = Instantiate(summonCharacter, m_point.transform.position, m_point.transform.rotation);
     }
+
+#if UNITY_EDITOR
+    void Update() {
+        if (Input.GetMouseButtonDown(0)) {
+            input.lineOfSightObj2
+                 .Subscribe(_ => {
+                     pushed();
+                 });
+        }
+    }
+	#endif
 }

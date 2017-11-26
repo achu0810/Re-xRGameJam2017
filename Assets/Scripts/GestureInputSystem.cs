@@ -2,25 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
+using UniRx.Triggers;
 
 public class GestureInputSystem : MonoBehaviour {
     public IConnectableObservable<Pair<RaycastHit>> lineOfSightObj;
-    public RaycastHit hit;
+    public Subject<Pair<Transform>> lineOfSightObj2 = new Subject<Pair<Transform>>();
+    public Transform hit;
 
     // Use this for initialization
     void Start () {
-        lineOfSightObj = Service.RaycastSystem(transform, 10f)
-                                .Publish();
-        lineOfSightObj.Subscribe(h => hit = h.Current).AddTo(gameObject);
-
-        lineOfSightObj
-            .Subscribe(h => {
-                h.Current.transform.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
+        this.UpdateAsObservable()
+            .Select(_ => hit)
+            .Pairwise()
+            .Where(x => x.Previous != x.Current)
+            .Subscribe(x => {
+                lineOfSightObj2.OnNext(x);
             });
+    }
 
-        lineOfSightObj
-            .Subscribe(h =>{
-                h.Previous.transform.GetComponent<Renderer>().material.color = new Color(0,0,0);
-            });
+    private void Update()
+    {
+        hit = Service.RaycastSystem2(transform, 100f);
     }
 }
