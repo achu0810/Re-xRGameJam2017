@@ -5,8 +5,8 @@ using UniRx;
 using UniRx.Triggers;
 
 public static class Service {
-    public static IObservable<RaycastHit> RaycastSystem(Transform transform, float length) {
-        return Observable.Create<RaycastHit>(observer => {
+    public static IObservable<Pair<RaycastHit>> RaycastSystem(Transform transform, float length) {
+        return Observable.Create<Pair<RaycastHit>>(observer => {
             RaycastHit hit = new RaycastHit();
             Observable.EveryUpdate()
                 .Select(_ => hit)
@@ -14,7 +14,7 @@ public static class Service {
                 .Subscribe(h => {
                     Physics.Raycast(transform.position, transform.forward, out hit, length);
                     if (h.Previous.transform != hit.transform) {
-                        observer.OnNext(hit);
+                        observer.OnNext(h);
                     }
                 }).AddTo(transform.gameObject);
             return new CompositeDisposable();
