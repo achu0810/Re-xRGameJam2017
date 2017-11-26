@@ -39,7 +39,7 @@ public class SummonButton : MonoBehaviour {
     }
 
     void SourcePressed(InteractionSourcePressedEventArgs state) {
-        if (input.hit.transform == transform) {
+        if (input.hit.transform == show.transform) {
             pushed();
         }
     }

@@ -22,6 +22,6 @@ public class GestureInputSystem : MonoBehaviour {
 
     private void Update()
     {
-        hit = Service.RaycastSystem2(transform, 100f);
+        Physics.Raycast(transform.position, transform.forward, out hit, 100f);
     }
 }
