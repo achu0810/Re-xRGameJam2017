@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 114094260768940482}
   - component: {fileID: 195298404181197860}
   - component: {fileID: 114365467435223336}
+  - component: {fileID: 114260229267107230}
   m_Layer: 0
   m_Name: Girl2
   m_TagString: Untagged
@@ -711,7 +712,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1251320945077942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.238, y: -8.1372046e-17, z: 24.301807}
+  m_LocalPosition: {x: -2.3535588, y: 0, z: 15.049224}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4583982265309720}
@@ -814,7 +815,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -969,6 +970,18 @@ MonoBehaviour:
   endAttackSec: 0.68
   trailRenderer: {fileID: 96538659083092606}
   stoppingDistance: 2.5
+--- !u!114 &114260229267107230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1251320945077942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbdb0abba5bb34fdda8adc08abac78c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_hp: 9
 --- !u!114 &114365467435223336
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -29,7 +29,6 @@ public class AllyAttack : MonoBehaviour {
 		this.UpdateAsObservable ()
 			.Subscribe (_ => {
 				if(animatorState.IsName(attackAnimationName)) {
-					Debug.Log(animatorState.normalizedTime);
 					if(animatorState.normalizedTime >= startAttackSec && animatorState.normalizedTime <= endAttackSec) {
 						swordObject.GetComponent<Collider>().enabled = true;
 						trailRenderer.enabled = true;
