@@ -29,17 +29,17 @@ public class SummonButton : MonoBehaviour {
             .First()
             .Subscribe(_ => {
                 input.lineOfSightObj2
-                     .Where(x => x.Current == transform)
+                     .Where(x => x.Current.transform == show.transform)
                      .Subscribe(x => selected());
                 input.lineOfSightObj2
-                     .Where(x => x.Previous == transform)
+                     .Where(x => x.Previous.transform == show.transform)
                      .Subscribe(x => normal());
             });
         InteractionManager.InteractionSourcePressed += SourcePressed;
     }
 
     void SourcePressed(InteractionSourcePressedEventArgs state) {
-        if (input.hit == transform) {
+        if (input.hit.transform == transform) {
             pushed();
         }
     }

@@ -21,9 +21,9 @@ public class Service {
         });
     }
 
-    public static Transform RaycastSystem2(Transform transform, float length) {
+    public static RaycastHit RaycastSystem2(Transform transform, float length) {
         RaycastHit hit;
         Physics.Raycast(transform.position, transform.forward, out hit, length);
-        return hit.transform;
+        return hit;
     }
 }
