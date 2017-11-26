@@ -13,6 +13,7 @@ public class EnemySystem : MonoBehaviour {
 	Animator _anim;
 	GameObject nowTarget;
 	NavMeshAgent nma;
+	bool flag;
 
 	const int WALK = 0;     // アニメーション:walk
 	const int ATTACK = 1;   // アニメーション:attack
@@ -27,16 +28,24 @@ public class EnemySystem : MonoBehaviour {
 		nma.destination = target.transform.position;
 		_anim = GetComponent<Animator>();
 		_anim.SetInteger(animState, WALK);
+		flag = false;
 
 		StartCoroutine(myUpdate());
 	}
 
-	IEnumerator attackCharacter() {
+	public IEnumerator attackCharacter() {
 
+		_anim.SetInteger(animState, ATTACK);
 		GameObject ap = Instantiate(attackParticle);
 		ap.transform.position = nowTarget.transform.position;
 		Destroy(ap.gameObject, 2);
-		yield return new WaitForSeconds(1.3f);
+
+		TestAlly ta = nowTarget.GetComponent<TestAlly>();
+		ta.damage(5f);
+
+		yield return new WaitForSeconds(1.23f);
+
+
 
 	}
 
@@ -45,23 +54,14 @@ public class EnemySystem : MonoBehaviour {
 
 		while(true) {
 
-			Debug.Log(nowTarget.name);
-
 			nma.destination = nowTarget.transform.position;
 
+
 			float distance = (transform.position - nowTarget.transform.position).sqrMagnitude;
-
-
-			while(attackDistance * attackDistance > distance) {
-				_anim.SetInteger(animState, ATTACK);
-
+			while(attackDistance * attackDistance >= distance && nowTarget != null) 
 				yield return StartCoroutine(attackCharacter());
-
-				yield return null;
-
-			}
-
 			_anim.SetInteger(animState, WALK);
+			nowTarget = target;
 
 			yield return null;
 
@@ -89,23 +89,6 @@ public class EnemySystem : MonoBehaviour {
 	}
 
 
-	/*
-	public void setTarget(GameObject newTarget) {
-
-		/*
-		 * 今のターゲットが目標でない
-		 * 即ち、自キャラを狙っている場合は
-		 * ターゲットを変更せず今のターゲットに向かう
-		 *
-		if(nowTarget != target)
-			return;
-
-
-		
-
-	}
-*/
-
 	private void OnTriggerStay(Collider other) {
 
 		/*
@@ -121,4 +104,13 @@ public class EnemySystem : MonoBehaviour {
 		nma.destination = other.gameObject.transform.position;
 	}
 
+	public void updateTarget(GameObject newT) {
+
+		if(nowTarget != target)
+			return;
+
+		nowTarget = newT.gameObject;
+		nma.destination = newT.gameObject.transform.position;
+	}
+	
 }
