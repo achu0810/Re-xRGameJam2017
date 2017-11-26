@@ -6,17 +6,34 @@ using UniRx.Triggers;
 
 public class LookingEnemy : MonoBehaviour {
 
-	private AllyAttack allyAttack;
+	private Transform m_trans;
+	[SerializeField]private float funcResult;
+	public GameObject enemyObject;
+	public float m_speed;
 	
 	void Start () {
-		this.UpdateAsObservable ()
-			.TakeWhile (_ => allyAttack == null)
-			.Subscribe (_ => allyAttack = GetComponent<AllyAttack> ());
+		Destroy (this.gameObject, 5f);
 
 		this.UpdateAsObservable ()
-			.SkipWhile (_ => allyAttack == null)
-			.Subscribe (_ => transform.LookAt(allyAttack.enemyObject.transform));
+			.Subscribe (x => {
+				SearchEnemies();
+				transform.LookAt(enemyObject.transform);
+				transform.position += Time.deltaTime * m_speed * transform.forward;
+			});
+	}
 
+	void SearchEnemies() {
+		GameObject[] enemies;
+		float minDistance = float.MaxValue;
+		float tmpDistance;
+		enemies = GameObject.FindGameObjectsWithTag("Enemy") as GameObject[];
+		foreach(GameObject enemy in enemies) {
+			tmpDistance = Vector3.Distance(this.transform.position, enemy.transform.position);
+			if(tmpDistance < minDistance) {
+				minDistance = tmpDistance;
+				enemyObject = enemy.gameObject;
+			}
+		}
 	}
 
 }

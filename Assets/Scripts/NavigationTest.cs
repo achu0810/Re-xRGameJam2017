@@ -15,9 +15,9 @@ public class NavigationTest : MonoBehaviour {
 
 	IEnumerator ins() {
 		yield return new WaitForSeconds (2.5f);
-		Instantiate (m_girl2);
+		Instantiate (m_girl2, new Vector3 (0, 0, 0), Quaternion.identity);
 		yield return new WaitForSeconds (2.5f);
-		Instantiate (m_girl3);
+		Instantiate (m_girl3, new Vector3 (0, 0, 0), Quaternion.identity);
 	}
 
 }

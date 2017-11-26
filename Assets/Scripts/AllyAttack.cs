@@ -21,6 +21,7 @@ public class AllyAttack : MonoBehaviour {
 	public float startAttackSec;
 	public float endAttackSec;
 	public TrailRenderer trailRenderer;
+	public float stoppingDistance;
 
 	void Start () {
 
@@ -52,6 +53,18 @@ public class AllyAttack : MonoBehaviour {
 			.TakeWhile (x => targetPos == Vector3.zero)
 			.Subscribe (x => targetPos = GameObject.FindWithTag ("EnemyTower").transform.position);
 
+		this.UpdateAsObservable ()
+			.Where (_ => enemyObject == null)
+			.Subscribe (_ => {
+				agent.destination = targetPos;
+				agent.stoppingDistance = 0;
+			});
+		this.UpdateAsObservable ()
+			.Where (_ => enemyObject != null)
+			.Subscribe (_ => {
+				agent.stoppingDistance = stoppingDistance;
+		});
+
 		// 1番近い敵を探す
 		this.UpdateAsObservable ()
 			.Subscribe (x => {
@@ -65,13 +78,13 @@ public class AllyAttack : MonoBehaviour {
 			.Where (_ => funcResult > valueOfSearchingForTheEnemy)
 			.Subscribe (_ => {
 				agent.destination = targetPos;
-				agent.stoppingDistance = 0;
+				//agent.stoppingDistance = 0;
 		});
 		this.UpdateAsObservable ()
 			.Where (_ => funcResult <= valueOfSearchingForTheEnemy)
 			.Where (_ => funcResult > attackDistance)
 			.Subscribe (_ => {
-				agent.stoppingDistance = 2.5f;
+			//	agent.stoppingDistance = stoppingDistance;
 				agent.destination = enemyObject.transform.position;
 		});
 		

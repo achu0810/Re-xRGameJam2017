@@ -957,7 +957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0795dc17b37e3a4fb0562aa0c065215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 3
+  attackDistance: 2.5
   valueOfSearchingForTheEnemy: 15
   enemyObject: {fileID: 0}
   funcResult: 0
@@ -968,6 +968,7 @@ MonoBehaviour:
   startAttackSec: 0.17
   endAttackSec: 0.68
   trailRenderer: {fileID: 96538659083092606}
+  stoppingDistance: 2.5
 --- !u!114 &114365467435223336
 MonoBehaviour:
   m_ObjectHideFlags: 1

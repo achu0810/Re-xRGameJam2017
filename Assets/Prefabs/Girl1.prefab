@@ -980,6 +980,7 @@ MonoBehaviour:
   startAttackSec: 0.25
   endAttackSec: 0.4
   trailRenderer: {fileID: 96209132318517918}
+  stoppingDistance: 2.5
 --- !u!137 &137167998374213674
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
