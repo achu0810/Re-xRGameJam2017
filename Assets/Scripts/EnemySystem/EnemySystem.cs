@@ -96,7 +96,7 @@ public class EnemySystem : MonoBehaviour {
 	}
 
 
-	private void OnTriggerStay(Collider other) {
+	private void OnTriggerEnter(Collider other) {
 
 		/*
 		 * 身近に敵がいる かつ 今の目標は敵キャラクターである場合
