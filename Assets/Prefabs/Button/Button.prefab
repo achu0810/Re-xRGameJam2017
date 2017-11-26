@@ -54,7 +54,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4837987546761448}
-  - component: {fileID: 114638740423568582}
+  - component: {fileID: 114122738929495450}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -145,7 +145,7 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114638740423568582
+--- !u!114 &114122738929495450
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -153,11 +153,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1967319671833022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9591742c83044abd85ac5f003afbb6f, type: 3}
+  m_Script: {fileID: 11500000, guid: d804da5f83f404086a6a40dfc024c52c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input: {fileID: 0}
   text: {fileID: 114668345620338198}
   show: {fileID: 23334296380201880}
+  summonCharacter: {fileID: 0}
+  normalTexture: {fileID: 0}
+  selectTexture: {fileID: 0}
+  pushedTexture: {fileID: 0}
+  disabledTexture: {fileID: 0}
 --- !u!114 &114668345620338198
 MonoBehaviour:
   m_ObjectHideFlags: 1
