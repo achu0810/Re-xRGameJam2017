@@ -7,7 +7,7 @@ public class EnemySystem : MonoBehaviour {
 
 	public float HP = 5.0f;
 	public GameObject target;
-	public float attackDistance = 2f;
+	public float attackDistance = 0.05f;
 	public GameObject attackParticle;
 	
 	Animator _anim;
@@ -40,8 +40,8 @@ public class EnemySystem : MonoBehaviour {
 		ap.transform.position = nowTarget.transform.position;
 		Destroy(ap.gameObject, 2);
 
-		TestAlly ta = nowTarget.GetComponent<TestAlly>();
-		ta.damage(5f);
+		//TestAlly ta = nowTarget.GetComponent<TestAlly>();
+		//ta.damage(5f);
 
 		yield return new WaitForSeconds(1.23f);
 
