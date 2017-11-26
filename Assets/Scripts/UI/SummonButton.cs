@@ -19,6 +19,7 @@ public class SummonButton : MonoBehaviour {
     Button button;
     [SerializeField]
     Texture disabledTexture;
+	[SerializeField]private Transform m_point;
 
     // Use this for initialization
     void Start () {
@@ -51,6 +52,6 @@ public class SummonButton : MonoBehaviour {
 
     void pushed() {
         show.material.mainTexture = pushedTexture;
-        var summoned = Instantiate(summonCharacter);
+		var summoned = Instantiate(summonCharacter, m_point.transform.position, m_point.transform.rotation);
     }
 }

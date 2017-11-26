@@ -194,7 +194,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  m_LocalPosition: {x: -0.69, y: 4.2810373e-18, z: -2.54}
+  m_LocalPosition: {x: 1.911, y: 0, z: 3.694}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400006}
@@ -479,7 +479,8 @@ MonoBehaviour:
   HP: 5
   target: {fileID: 0}
   attackDistance: 2
-  attackParticle: {fileID: 0}
+  attackParticle: {fileID: 1256324601439218, guid: 1b17584c387ca844585381d37d4cbbad,
+    type: 2}
 --- !u!135 &135973839377140554
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -501,7 +502,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 0.1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
