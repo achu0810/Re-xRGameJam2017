@@ -25,13 +25,13 @@ public class SummonButton : MonoBehaviour {
     // Use this for initialization
     void Start() {
         this.UpdateAsObservable()
-            .SkipWhile(_ => input.lineOfSightObj2 == null)
+            .Where(_ => input.lineOfSightObj2 != null)
             .First()
             .Subscribe(_ => {
-                input.lineOfSightObj2
+            input.lineOfSightObj2
                      .Where(x => x.Current.transform == show.transform)
                      .Subscribe(x => selected());
-                input.lineOfSightObj2
+            input.lineOfSightObj2
                      .Where(x => x.Previous.transform == show.transform)
                      .Subscribe(x => normal());
             });

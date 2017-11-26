@@ -54,7 +54,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4837987546761448}
-  - component: {fileID: 114122738929495450}
+  - component: {fileID: 114737516979054640}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -81,15 +81,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1967319671833022}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071069, w: -0.70710677}
+  m_LocalPosition: {x: -3.896, y: 2.451, z: -0.045}
+  m_LocalScale: {x: 0.9999999, y: 0.99999976, z: 0.99999976}
   m_Children:
   - {fileID: 4381666606243212}
   - {fileID: 224342685336822404}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
 --- !u!23 &23334296380201880
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -145,25 +145,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114122738929495450
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1967319671833022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d804da5f83f404086a6a40dfc024c52c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: {fileID: 0}
-  text: {fileID: 114668345620338198}
-  show: {fileID: 23334296380201880}
-  summonCharacter: {fileID: 0}
-  normalTexture: {fileID: 0}
-  selectTexture: {fileID: 0}
-  pushedTexture: {fileID: 0}
-  disabledTexture: {fileID: 0}
 --- !u!114 &114668345620338198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -197,6 +178,27 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: New Text
+--- !u!114 &114737516979054640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1967319671833022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d804da5f83f404086a6a40dfc024c52c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 0}
+  text: {fileID: 114668345620338198}
+  show: {fileID: 23334296380201880}
+  summonCharacter: {fileID: 1251320945077942, guid: 54268bc141db0b04eb2d94eebde642de,
+    type: 2}
+  normalTexture: {fileID: 2800000, guid: dc35e609c5fb7cc43b6fac8369756fbb, type: 3}
+  selectTexture: {fileID: 2800000, guid: fc28bf2a7d2944a47814ec9d04a05efd, type: 3}
+  pushedTexture: {fileID: 2800000, guid: 1030743ee8fa81f4a8fef9382ae19728, type: 3}
+  disabledTexture: {fileID: 2800000, guid: da4f40b2935920f47a2bfefabfeaa90f, type: 3}
+  m_point: {fileID: 0}
 --- !u!222 &222441509483256438
 CanvasRenderer:
   m_ObjectHideFlags: 1
