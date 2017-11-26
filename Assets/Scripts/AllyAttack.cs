@@ -16,17 +16,25 @@ public class AllyAttack : MonoBehaviour {
 	private NavMeshAgent agent;
 	[SerializeField]private Vector3 targetPos = Vector3.zero;
 	public GameObject swordObject;
+	public string swordName;
+	public string attackAnimationName;
+	public float startAttackSec;
+	public float endAttackSec;
+	public TrailRenderer trailRenderer;
 
 	void Start () {
 
-		// add collision to sword 
+		// add collision to sword  0.25f
 		this.UpdateAsObservable ()
 			.Subscribe (_ => {
-				if(animatorState.IsName("standing_melee_attack_horizontal")) {
-					if(animatorState.normalizedTime >= 0.25f && animatorState.normalizedTime <= 0.4f) {
+				if(animatorState.IsName(attackAnimationName)) {
+					Debug.Log(animatorState.normalizedTime);
+					if(animatorState.normalizedTime >= startAttackSec && animatorState.normalizedTime <= endAttackSec) {
 						swordObject.GetComponent<Collider>().enabled = true;
+						trailRenderer.enabled = true;
 					} else {
 						swordObject.GetComponent<Collider>().enabled = false;
+						trailRenderer.enabled = false;
 					}
 				}
 		});
@@ -37,7 +45,7 @@ public class AllyAttack : MonoBehaviour {
 		// get sword
 		this.UpdateAsObservable ()
 			.TakeWhile (_ => swordObject == null)
-			.Subscribe (_ => swordObject = this.transform.Find ("Sword").gameObject);
+			.Subscribe (_ => swordObject = this.transform.Find (swordName).gameObject);
 
 		// EnemyTowerタグがついたものを探す
 		this.UpdateAsObservable ()
