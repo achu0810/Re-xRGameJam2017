@@ -99,7 +99,7 @@ NavMeshSettings:
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
-    agentSlope: 45
+    agentSlope: 20.3
     agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
@@ -162,7 +162,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1225697901058554, guid: 6b1c7a3f45187db43bc5d65bd8929934, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b1c7a3f45187db43bc5d65bd8929934, type: 2}
@@ -359,7 +359,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4122318377974142, guid: 14083ca5a668200479fcfa58a130475e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 4122318377974142, guid: 14083ca5a668200479fcfa58a130475e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -916,7 +916,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1251320945077942, guid: 54268bc141db0b04eb2d94eebde642de, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54268bc141db0b04eb2d94eebde642de, type: 2}
@@ -966,7 +966,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1796322806852232, guid: ac485f5cd30697f4b8c88fda9ecce4c0, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac485f5cd30697f4b8c88fda9ecce4c0, type: 2}
